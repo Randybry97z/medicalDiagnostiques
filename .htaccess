@@ -1,0 +1,8 @@
+# Activar rewrite
+RewriteEngine on
+ErrorDocument 404 http://3.134.247.207/mdt_final/?controller=errorController&action=index
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
