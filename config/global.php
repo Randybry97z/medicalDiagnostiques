@@ -1,7 +1,7 @@
 <?php
 // Ip de la pc servidor
 // define("DB_HOST","db755301641.db.1and1.com");
-define("DB_HOST","localhost");
+define("DB_HOST","mdtdatabase.cmyyp7dfphpr.us-east-2.rds.amazonaws.com");
 
 // Nombre de la base de datos
 // define("DB_NAME","db755301641");
