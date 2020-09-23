@@ -22,7 +22,7 @@
                     <tbody>
                       <?php while($programa=$progs->fetch_object()): ?>
                         <tr>
-                          <td><a href="<?=base_url?>controller=ProgramaController&action=detalle&id=<?=$programa->idprograma?>"><?=$programa->nombre?></a></td>
+                          <td><a href="<?=base_url?>?controller=ProgramaController&action=detalle&id=<?=$programa->idprograma?>"><?=$programa->nombre?></a></td>
                           <td>
                             <?php if($programa->estatus): ?>
                               <span class="label bg-green">Activado</span>
