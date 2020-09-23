@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="box-body">
-                    <form action="<?=base_url?>controller=ResultadoController&action=save&id=<?=$res->idresultado?>" name="formulario"
+                    <form action="<?=base_url?>?controller=ResultadoController&action=save&id=<?=$res->idresultado?>" name="formulario"
                         id="formulario" method="POST" enctype="multipart/form-data">
 
                         <div class="panel-body table-responsive" id="listadoregistros">

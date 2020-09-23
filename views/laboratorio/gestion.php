@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="box">
               <div class="box-header with-border">
-                    <h1 class="box-title">Laboratorio <a class="btn btn-success" id="btnagregar" href="<?=base_url?>Laboratorio/registro"><i class="fa fa-plus-circle"></i> Agregar</a></h1>
+                    <h1 class="box-title">Laboratorio <a class="btn btn-success" id="btnagregar" href="<?=base_url?>?controller=LaboratorioController&action=registro"><i class="fa fa-plus-circle"></i> Agregar</a></h1>
                   <div class="box-tools pull-right">
                   </div>
               </div>
@@ -26,7 +26,7 @@
                     <tbody>
                     	<?php while ($labs=$laboratorios->fetch_object()): ?>
 						            <tr>
-							            <td style="width: 10%"><a href="<?=base_url?>Laboratorio/detalle&id=<?=$labs->idlaboratorio?>"><?=$labs->nombre?></a></td>
+							            <td style="width: 10%"><a href="<?=base_url?>?controller=LaboratorioController&action=detalle&id=<?=$labs->idlaboratorio?>"><?=$labs->nombre?></a></td>
                           <td style="width: 10%"><?=$labs->estado?></td>
 							            <td style="width: 10%"><?=$labs->ciudad?></td>
 							            <td style="width: 2%"><a href="mailto:<?=$labs->correo?>"><?=$labs->correo?></a></td>
