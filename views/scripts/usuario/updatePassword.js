@@ -1,4 +1,4 @@
-const base_url = "http://3.134.247.207/mdt_final/";
+const base_url = "http://localhost/mdt_final/";
 var btnCancelar = document.getElementById("btnCancelar")
 
 function cancelar() {
