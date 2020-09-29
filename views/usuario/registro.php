@@ -12,7 +12,7 @@
               <h3>Registrar Usuario</h3>
             </div>
            <div class="panel-body" id="formularioregistros">
-                <form action="<?=base_url?>?controller?UsuarioController&action=save" name="formulario" id="formulario" method="POST">
+                <form action="<?=base_url?>?controller=UsuarioController&action=save" name="formulario" id="formulario" method="POST">
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label>Nombre</label>
                     <input type="hidden" name="idusuario" id="idusuario">

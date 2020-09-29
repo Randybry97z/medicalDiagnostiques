@@ -14,7 +14,7 @@
               </div>
             </div>
             <div class="panel-body" id="formularioregistros">
-              <form action="<?=base_url?>Laboratorio/save" name="formulario" id="formulario" method="POST">
+              <form action="<?=base_url?>?controller=LaboratorioController&action=save" name="formulario" id="formulario" method="POST">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Nombre</label>
                   <input type="hidden" name="idlaboratorio" id="idlaboratorio">
