@@ -25,10 +25,14 @@ class LaboratorioController{
   }
 
   public function gestion(){
+	if(Utils::isAdmin()||Utils::isCoordinador()||Utils::isCallCenter()){
     $laboratorio = new Laboratorio();
 
     $laboratorios = $laboratorio->getAll();
     require_once 'views/laboratorio/gestion.php';
+	}else{
+		header("Location:".base_url."?controller=InicioController&action=index");
+	}
   }
 
   public function detalle(){

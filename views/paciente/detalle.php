@@ -217,19 +217,47 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Médico Tratante</label>
-                            <?php $medicos = Utils::showMedicos();?>
+                            <?php $medicos_tratantes = Utils::showMedicosTratantes();?>
                             <select class="form-control" data-live-search="true" name="medico_tratante"
                                 id="medico_tratante">
-                                <?php while($med = $medicos->fetch_object()): ?>
-                                <option value="<?=$med->idusuario?>"
-                                    <?=isset($med) && is_object($med) && $med->idusuario == $pac->medico_tratante ? 'selected' : '';?>>
-                                    <?=$med->nombre?></option>
+                                <?php while($medt = $medicos_tratantes->fetch_object()): ?>
+                                <option value="<?=$medt->idusuario?>"
+                                    <?=isset($medt) && is_object($medt) && $medt->idusuario == $pac->medico_tratante ? 'selected' : '';?>>
+                                    <?=$medt->nombre?></option>
                             </select>
                         </div>
+												
                         <div class="form-group form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="correo_medico"
                             disabled="true">
-                            <label>Correo del médico</label>
-                            <?php $medico = Utils::showEmail($med->idusuario);?>
+                            <label>Correo del médico tratante</label>
+                            <?php $medico = Utils::showEmail($medt->idusuario);?>
+                            <?php while($m = $medico->fetch_object()): ?>
+                            <?php if($m->correo): ?>
+                            <div class="container form-control"><a href="mailto:<?=$m->correo?>"><?=$m->correo?></a>
+                            </div>
+                            <?php else: ?>
+                            <div class="container form-control">Sin correo electrónico</div>
+                            <?php endif; ?>
+                            <?php endwhile; ?>
+                            <?php endwhile ?>
+                        </div>
+						
+						<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Médico Asociado</label>
+                            <?php $medicos_asociados = Utils::showMedicosAsociados();?>
+                            <select class="form-control" data-live-search="true" name="medico_asociado"
+                                id="medico_asociado">
+                                <?php while($meda = $medicos_asociados->fetch_object()): ?>
+                                <option value="<?=$meda->idusuario?>"
+                                    <?=isset($meda) && is_object($meda) && $meda->idusuario == $pac->medico_asociado ? 'selected' : '';?>>
+                                    <?=$meda->nombre?></option>
+                            </select>
+                        </div>
+												
+                        <div class="form-group form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="correo_medico"
+                            disabled="true">
+                            <label>Correo del médico asociado</label>
+                            <?php $medico = Utils::showEmail($meda->idusuario);?>
                             <?php while($m = $medico->fetch_object()): ?>
                             <?php if($m->correo): ?>
                             <div class="container form-control"><a href="mailto:<?=$m->correo?>"><?=$m->correo?></a>

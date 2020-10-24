@@ -27,6 +27,7 @@
                                 <th class="th-sm">Estudio</th>
                                 <th class="th-sm">Estatus</th>
                                 <th class="th-sm">Creado por</th>
+								
                             </thead>
                             <tbody>
                                 <?php while ($pcs=$pacientes->fetch_object()): ?>

@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <button class="btn btn-danger"
                                 onclick="window.open('?controller=ResultadoController&action=generatePDF&id=<?=$res->idresultado?>', '_blank')"
-                                id="btnCancelar"><i class="fa fa-plus-circle"></i> PDF</button>
+                                id="btnCancelar"><i class="fa fa-plus-circle"></i> Descargar estudio</button>
                         </div>
                     </div>
                 </div>
@@ -3360,15 +3360,27 @@
                                 </div>
                             </div>
                             <div>
+							<?php if(Utils::isMedicoTratante()):?>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Resultados</label>
                                     <div class="container" id="div_resultados"><a
                                             href="<?=base_url.'uploads/resultados/imgs/'.$res->resultado_archivo?>"
                                             target="_blank"><?=($res->resultado_archivo) ? $res->resultado_archivo : 'Sin resultados' ?></a>
                                     </div>
-                                    <input type="file" class="form-control" name="resultado_archivo"
+                                    <input type="hidden" class="form-control" name="resultado_archivo"
                                         id="resultado_archivo">
                                 </div>
+							<?php else:?>
+							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>Resultados</label>
+                                    <div class="container" id="div_resultados"><a
+                                            href="<?=base_url.'uploads/resultados/imgs/'.$res->resultado_archivo?>"
+                                            target="_blank"><?=($res->resultado_archivo) ? $res->resultado_archivo : 'Sin resultados' ?></a>
+                                    </div>
+                                    <input type="file" class="form-control" name="resultado_archivo"
+                                        id="resultado_archivo" >
+                                </div>
+							<?php endif;?>
                             </div>
                         </div>
 

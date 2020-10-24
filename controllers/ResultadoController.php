@@ -9,8 +9,24 @@ class ResultadoController{
   public function gestion(){
     $resultado = new Resultado();
 
+	if(Utils::isAdmin()||Utils::isCoordinador()||Utils::isCallCenter()){
     $resultados = $resultado->getAll();
     require_once 'views/resultado/gestion.php';
+	}else if(Utils::isMedicoAsociado()){
+		//if (isset($_GET['idusuario'])) {
+		$idusuario = $_GET['idusuario'];
+        $resultados = $resultado->getMedicoAsociado($idusuario);
+		require_once 'views/resultado/gestion.php';
+		//}
+	}else if(Utils::isMedicoTratante()){
+		//if (isset($_GET['idusuario'])) {
+		$idusuario = $_GET['idusuario'];
+        $resultados = $resultado->getMedicoTratante($idusuario);
+		require_once 'views/resultado/gestion.php';
+		//}
+	}else{
+		header("Location:".base_url."?controller=InicioController&action=index");
+	}
   }
 
   public function registro(){
@@ -519,7 +535,7 @@ class ResultadoController{
          // set document information
          $pdf->SetCreator(PDF_CREATOR);
          $pdf->SetAuthor('Nicola Asuni');
-         $pdf->SetTitle('Reporte 002');
+         $pdf->SetTitle('Folio: '.$res->folio_paciente);
          $pdf->SetSubject('TCPDF Tutorial');
          $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -981,7 +997,7 @@ class ResultadoController{
          // ---------------------------------------------------------
 
          //Close and output PDF document
-         $pdf->Output('reporte.pdf', 'I');
+         $pdf->Output($res->folio_paciente.'.pdf', 'I');
 
          //============================================================+
          // END OF FILE

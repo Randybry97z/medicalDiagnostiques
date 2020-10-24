@@ -26,11 +26,12 @@
                             <input type="hidden" name="idpaciente" id="idpaciente">
                             <input type="hidden" name="creado_por" id="creado_por"
                                 value="<?=$_SESSION['identity']->idusuario?>">
-                            <?php $programas = Utils::showProgramas();?>
+								
+                            <?php $programas = Utils::showPrograma($_GET['idprograma']);?>
                             <select class="form-control" data-live-search="true" name="idprograma" id="idprograma">
-                                <?php while($prog = $programas->fetch_object()): ?>
-                                <option value="<?=$prog->idprograma?>"><?=$prog->nombre?></option>
-                                <?php endwhile ?>
+                                <?php// while($prog = $programas->fetch_object()): ?>
+                                <option value="<?=$programas->idprograma?>"><?=$programas->nombre?></option>
+                                <?php// endwhile ?>
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -195,9 +196,19 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Médico Tratante</label>
-                            <?php $medicos = Utils::showMedicos();?>
+                            <?php $medicos = Utils::showMedicosTratantes();?>
                             <select class="form-control" data-live-search="true" name="medico_tratante"
                                 id="medico_tratante">
+                                <?php while($med = $medicos->fetch_object()): ?>
+                                <option value="<?=$med->idusuario?>"><?=$med->nombre?></option>
+                                <?php endwhile ?>
+                            </select>
+                        </div>
+						<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Médico Asociado</label>
+                            <?php $medicos = Utils::showMedicosAsociados();?>
+                            <select class="form-control" data-live-search="true" name="medico_asociado"
+                                id="medico_asociado">
                                 <?php while($med = $medicos->fetch_object()): ?>
                                 <option value="<?=$med->idusuario?>"><?=$med->nombre?></option>
                                 <?php endwhile ?>
@@ -222,7 +233,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Fecha entrega</label>
+                            <label>Fecha de pago</label>
                             <input type="date" class="form-control" name="fecha_entrega" id="fecha_entrega"
                                 placeholder="Fecha de entrega" required>
                         </div>

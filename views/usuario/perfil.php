@@ -71,7 +71,9 @@
                                 <select class="form-control" data-live-search="true" name="tipo" id="tipo" required>
                                     <option selected="true" value="<?=$usr->tipo?>"><?=$usr->tipo?></option>
                                     <option value="Interno">Interno</option>
-                                    <option value="Medico tratante">Médico tratante</option>
+                                    <option value="Médico Tratante">Médico Tratante</option>
+									
+                                    <option value="Médico Asociado">Médico Asociado</option>
                                 </select>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

@@ -2,6 +2,7 @@
 
 require_once 'models/paciente.php';
 require_once 'models/persona.php';
+require_once 'models/usuario.php';
 
 class PacienteController{
   public function index(){
@@ -26,14 +27,16 @@ class PacienteController{
   }
 
   public function programa(){
-    if (isset($_GET['idprograma']) && isset($_GET['idcliente'])) {
-      $idprograma = $_GET['idprograma'];
-      $idcliente = $_GET['idcliente'];
-
-      $paciente = new Paciente();
-      $pacientes = $paciente->getPrograma($idprograma,$idcliente);
-    }
-    require_once 'views/paciente/gestion.php';
+	  $paciente = new Paciente();
+        if (isset($_GET['idprograma']) && isset($_GET['idcliente'])) {
+        $idprograma = $_GET['idprograma'];
+        $idcliente = $_GET['idcliente'];
+        $pacientes = $paciente->getPrograma($idprograma,$idcliente);
+		require_once 'views/paciente/gestion.php';
+	   
+	  }else if(!Utils::isCallCenter()){
+		  header("Location:".base_url."?controller=InicioController&action=index");
+	  }
   }
 
   public function programaCancelados(){
@@ -110,6 +113,7 @@ class PacienteController{
       $resultado_copia = isset($_POST['resultado_copia']) ? 1 : 0;
       $hora_cita = isset($_POST['hora_cita']) ? $_POST['hora_cita'] : false;
       $fecha_resultados = isset($_POST['fecha_resultados']) ? $_POST['fecha_resultados'] : false;
+	  $medico_asociado = isset($_POST['medico_asociado']) ? $_POST['medico_asociado'] : 0;
 
       // Formulate the Difference between two dates
       $today = date('Y-m-d');
@@ -157,6 +161,7 @@ class PacienteController{
       $paciente->setTipoestudio($tipo_estudio);
       $paciente->setHoraCita($hora_cita);
       $paciente->setFechaResultados($fecha_resultados);
+      $paciente->setMedicoAsociado($medico_asociado);
       // Guardar resultados
       if(isset($_FILES['resultados'])){
         $file = $_FILES['resultados'];

@@ -25,10 +25,14 @@ class ProgramaController{
   }
 
   public function gestion(){
+	if(Utils::isAdmin()||Utils::isCoordinador()){
     $programa = new Programa();
 
     $progs = $programa->getAll();
     require_once 'views/programa/gestion.php';
+	}else{
+		header("Location:".base_url."?controller=InicioController&action=index");
+	}
   }
 
   public function detalle(){

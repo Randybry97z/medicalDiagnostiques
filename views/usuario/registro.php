@@ -38,7 +38,8 @@
                   <label>Tipo de usuario</label>
                   <select  class="form-control selectpicker" data-live-search="true"  name="tipo" id="tipo" required>
                     <option value="Interno">Interno</option>
-                    <option value="Medico tratante">Médico tratante</option>
+                    <option value="Medico tratante">Médico Tratante</option>
+                    <option value="Medico asociado">Médico Asociado</option>
                   </select>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

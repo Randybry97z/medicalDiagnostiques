@@ -57,6 +57,7 @@ class PersonaController{
   }
 
   public function gestion(){
+	
     $persona = new Persona();
 
     $personas = $persona->getAll();
@@ -64,10 +65,15 @@ class PersonaController{
   }
 
   public function clientes(){
+	  
+	if(Utils::isAdmin()){
     $persona = new Persona();
 
     $clientes = $persona->getClientes();
     require_once 'views/persona/clientes.php';
+	}else {
+		header("Location:".base_url."?controller=InicioController&action=index");
+	}
   }
 
   public function detalle(){

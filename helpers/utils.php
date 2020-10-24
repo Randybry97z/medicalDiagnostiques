@@ -15,11 +15,80 @@ class Utils{
     $usuario = new Usuario();
     $admin = $usuario->admin($_SESSION['identity']->idusuario);
     $isadmin = $admin->fetch_object();
-
-    if($isadmin->idpermiso != "4"){
-      header("Location:".base_url.'?controller=InicioController&action=index');
-    }else{
+	if(!isset($isadmin)){
+		return false;
+	}else{
+	 if($isadmin->idpermiso != "4"){
+       header("Location:".base_url.'?controller=InicioController&action=index');
+     }else{
       return true;
+     }
+	}
+	
+  }
+  
+  public static function isCallCenter(){
+    require_once 'models/usuario.php';
+    $usuario = new Usuario();
+    $callcenter = $usuario->callCenter($_SESSION['identity']->idusuario);
+    $iscallcenter = $callcenter->fetch_object();
+	if(!isset($iscallcenter)){
+		return false;
+	}else{
+	 if($iscallcenter->idpermiso != "6"){
+       header("Location:".base_url.'?controller=InicioController&action=index');
+     }else{
+      return true;
+     }
+    }
+  }
+  
+  public static function isCoordinador(){
+    require_once 'models/usuario.php';
+    $usuario = new Usuario();
+    $coordinador = $usuario->coordinador($_SESSION['identity']->idusuario);
+    $iscoordinador = $coordinador->fetch_object();
+	if(!isset($iscoordinador)){
+		return false;
+	}else{
+	 if($iscoordinador->idpermiso != "2"){
+       header("Location:".base_url.'?controller=InicioController&action=index');
+     }else{
+      return true;
+     }
+    }
+  }
+
+  public static function isMedicoTratante(){
+    require_once 'models/usuario.php';
+    $usuario = new Usuario();
+    $medicot = $usuario->medicoTratante($_SESSION['identity']->idusuario);
+    $ismedicotratante = $medicot->fetch_object();
+if(!isset($ismedicotratante)){
+		return false;
+	}else{
+	 if($ismedicotratante->idpermiso != "8"){
+       header("Location:".base_url.'?controller=InicioController&action=index');
+     }else{
+      return true;
+     }
+    }
+  }
+  
+   public static function isMedicoAsociado(){
+    require_once 'models/usuario.php';
+    $usuario = new Usuario();
+    $medicot = $usuario->medicoAsociado($_SESSION['identity']->idusuario);
+    $ismedicotratante = $medicot->fetch_object();
+
+    if(!isset($ismedicotratante)){
+		return false;
+	}else{
+	 if($ismedicotratante->idpermiso != "9"){
+       header("Location:".base_url.'?controller=InicioController&action=index');
+     }else{
+      return true;
+     }
     }
   }
 
@@ -38,11 +107,18 @@ class Utils{
     return $permisos;
   }
 
-  public static function showMedicos(){
+  public static function showMedicosTratantes(){
     require_once 'models/usuario.php';
     $usuario = new Usuario();
-    $medicos = $usuario->getMedicos();
-    return $medicos;
+    $medicost = $usuario->getMedicosTratantes();
+    return $medicost;
+  }
+  
+  public static function showMedicosAsociados(){
+    require_once 'models/usuario.php';
+    $usuario = new Usuario();
+    $medicosa = $usuario->getMedicosAsociados();
+    return $medicosa;
   }
 
   public static function showEmail($idusuario){
@@ -70,6 +146,13 @@ class Utils{
     require_once 'models/programa.php';
     $programa = new Programa();
     $programas = $programa->getAll();
+    return $programas;
+  }
+  
+  public static function showPrograma($id){
+    require_once 'models/programa.php';
+    $programa = new Programa();
+    $programas = $programa->getPrograma($id);
     return $programas;
   }
 

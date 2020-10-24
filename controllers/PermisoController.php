@@ -4,10 +4,12 @@ require_once 'models/permiso.php';
 class PermisoController{
 
 	public function index(){
+		if(Utils::isAdmin()){
 		$permiso = new Permiso();
 		$permisos = $permiso->getAll();
 
 		require_once 'views/permiso/listar.php';
+		}else {header("Location:".base_url."?controller=InicioController&action=index");}
 	}
 
 	public function crear(){

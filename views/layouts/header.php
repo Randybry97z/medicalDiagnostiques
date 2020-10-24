@@ -111,7 +111,7 @@
                     <?php if ($_SESSION['identity']) : ?>
                     <?php $clis = Utils::showClientesHead();?>
                     <?php while($cli = $clis->fetch_object()): ?>
-                    <li>
+                    <li style="display:<?=Utils::isAdmin() || Utils::isCallCenter() || Utils::isCoordinador()? 'block' : 'none';?>">
                         <button class="btn btn-secondary text-muted" type="button" data-toggle="collapse"
                             data-target="#<?=$cli->idpersona?>" style="width: 100%;text-align: left;">
                             <?=$cli->nombre?> <i style="float: right;" class="fa fa-angle-right"></i>
@@ -128,23 +128,45 @@
                                     </button>
                                     <div class="collapse " id="<?=$cli->idpersona.$pros->nombre?>">
                                         <ul class="ml-auto">
+										
                                             <li class="item">
+											    <?php if(Utils::isAdmin() || Utils::isCallCenter() || Utils::isCoordinador()):?>
                                                 <a class="link scroll-link"
-                                                    href="<?=base_url?>?controller=PacienteController&action=registro&idcliente=<?=$cli->idpersona?>">
+                                                    href="<?=base_url?>?controller=PacienteController&action=registro&idcliente=<?=$cli->idpersona?>&idprograma=<?=$pros->idprograma?>">
                                                     <span>Registro de pacientes</span>
                                                 </a>
+												<?php else:?>
+												<a class="link scroll-link"
+                                                    href="<?=base_url?>?controller=InicioController&action=index">
+                                                    <span>Registro de pacientes</span>
+                                                </a>
+												<?php endif; ?>
                                             </li>
                                             <li class="item">
-                                                <a class="link scroll-link"
+											<?php if(Utils::isAdmin()||Utils::isCallCenter()||Utils::isCoordinador()):?>
+												<a class="link scroll-link"
                                                     href="<?=base_url?>?controller=PacienteController&action=programa&idprograma=<?=$pros->idprograma?>&idcliente=<?=$cli->idpersona?>">
                                                     <span>Gestión de pacientes</span>
                                                 </a>
+											<?php else:?>
+												<a class="link scroll-link"
+                                                    href="<?=base_url?>?controller=InicioController&action=index">
+                                                    <span>Gestión de pacientes</span>
+                                                </a>
+											<?php endif; ?>
                                             </li>
                                             <li class="item">
+											    <?php if(Utils::isAdmin()||Utils::isCallCenter()||Utils::isCoordinador()):?>
                                                 <a class="link scroll-link"
                                                     href="<?=base_url?>?controller=PacienteController&action=programaCancelados&idprograma=<?=$pros->idprograma?>&idcliente=<?=$cli->idpersona?>">
                                                     <span>Pacientes cancelados</span>
                                                 </a>
+												<?php else:?>
+												<a class="link scroll-link"
+                                                    href="<?=base_url?>?controller=InicioController&action=index">
+                                                    <span>Pacientes cancelados</span>
+                                                </a>
+												<?php endif; ?>
                                             </li>
                                         </ul>
                                     </div>
@@ -155,33 +177,33 @@
                     </li>
                     <?php endwhile ?>
                     <li>
-                        <a class="link scroll-link" href="<?=base_url?>?controller=LaboratorioController&action=gestion">
+                        <a class="link scroll-link" href="<?=base_url?>?controller=LaboratorioController&action=gestion" style="display:<?=Utils::isAdmin() || Utils::isCoordinador() || Utils::isCallCenter()? 'block' : 'none';?>">
                             <i class="fa fa-flask"></i> <span>Laboratorios</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url?>?controller=UsuarioController&action=gestion">
+                        <a href="<?=base_url?>?controller=UsuarioController&action=gestion" style="display:<?=Utils::isAdmin() ? 'block' : 'none';?>">
                             <i class="fa fa-user"></i> <span>Gestión de usuarios</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url?>?controller=PermisoController&action=index">
+                        <a href="<?=base_url?>?controller=PermisoController&action=index" style="display:<?=Utils::isAdmin() ? 'block' : 'none';?>">
                             <i class="fa fa-check"></i> <span>Gestión de permisos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url?>?controller=PersonaController&action=clientes">
+                        <a href="<?=base_url?>?controller=PersonaController&action=clientes" style="display:<?=Utils::isAdmin() ? 'block' : 'none';?>">
                             <i class="fa fa-group"></i>
                             <span>Gestion de Clientes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url?>?controller=ProgramaController&action=gestion">
+                        <a href="<?=base_url?>?controller=ProgramaController&action=gestion" style="display:<?=Utils::isAdmin() || Utils::isCoordinador() ? 'block' : 'none';?>">
                             <i class="fa fa-tasks"></i> <span>Gestión de programas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url?>?controller=ResultadoController&action=gestion">
+                        <a href="<?=base_url?>?controller=ResultadoController&action=gestion" style="display:<?=Utils::isAdmin() || Utils::isCoordinador() || Utils::isCallCenter() || Utils::isMedicoTratante() || Utils::isMedicoAsociado()? 'block' : 'none';?>">
                             <i class="fa fa-tasks"></i> <span>Captura de resultados</span>
                         </a>
                     </li>

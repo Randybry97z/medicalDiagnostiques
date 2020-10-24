@@ -1928,26 +1928,81 @@ public function getResultadoarchivo(){
     //$resultados = $this->db->query("SELECT * FROM resultados ORDER BY idresultado DESC");
     $resultados = $this->db->query("SELECT res.idresultado, pac.nombre AS nombre_paciente, pro.nombre AS nombre_programa,
     pac.tipo_estudio AS tipo_estudio,
-    med.nombre AS nombre_medico, p.nombre AS nombre_estudio
+    med.nombre AS nombre_medico, 
+	p.nombre AS nombre_estudio,
+	meda.nombre AS nombre_medico_tratante,
+	pac.creado_por AS creado_por
     FROM resultados res 
     INNER JOIN pacientes pac ON pac.idpaciente = res.idpaciente
     INNER JOIN programas pro ON pro.idprograma = pac.idprograma
     INNER JOIN usuario med ON med.idusuario = pac.medico_tratante
-    INNER JOIN persona p ON p.idpersona = pac.estudio");
+    INNER JOIN persona p ON p.idpersona = pac.estudio
+    INNER JOIN usuario meda ON meda.idusuario = pac.medico_asociado");
+	
         return $resultados;
   }
-
+  
   public function getOne(){
     $resultado = $this->db->query("SELECT res.*, 
     pac.nombre AS nombre_paciente, pac.edad AS edad_paciente, pac.folio_id AS folio_paciente, pac.tipo_estudio AS tipo_estudio,
     pro.nombre AS nombre_programa,
-    med.nombre AS nombre_medico, p.nombre AS nombre_estudio
+    med.nombre AS nombre_medico, p.nombre AS nombre_estudio,
+	med.nombre AS nombre_medico_tratante,
+	meda.nombre AS nombre_medico_asociado,
+	pac.creado_por AS creado_por
     FROM resultados res 
     INNER JOIN pacientes pac ON pac.idpaciente = res.idpaciente
     INNER JOIN programas pro ON pro.idprograma = pac.idprograma
     INNER JOIN usuario med ON med.idusuario = pac.medico_tratante
+    INNER JOIN usuario meda ON meda.idusuario = pac.medico_asociado
     INNER JOIN persona p ON p.idpersona = pac.estudio WHERE idresultado= {$this->getIdresultado()}");
     return $resultado->fetch_object();
+  }
+  
+  public function getMedicoTratante($idmedico){
+    //$resultados = $this->db->query("SELECT * FROM resultados ORDER BY idresultado DESC");
+    $resultados = $this->db->query("SELECT res.idresultado, pac.nombre AS nombre_paciente, pro.nombre AS nombre_programa,
+    pac.tipo_estudio AS tipo_estudio,
+	pac.creado_por AS creado_por,
+    med.nombre AS nombre_medico, p.nombre AS nombre_estudio,
+	meda.nombre AS nombre_medico_tratante
+    FROM resultados res 
+    INNER JOIN pacientes pac ON pac.idpaciente = res.idpaciente
+    INNER JOIN programas pro ON pro.idprograma = pac.idprograma
+    INNER JOIN usuario med ON med.idusuario = pac.medico_tratante
+    INNER JOIN usuario meda ON meda.idusuario = pac.medico_asociado
+    INNER JOIN persona p ON p.idpersona = pac.estudio WHERE med.idusuario = $idmedico or meda.idusuario = $idmedico");
+        return $resultados;
+  }
+  public function getMedicoAsociado($idmedico){
+    //$resultados = $this->db->query("SELECT * FROM resultados ORDER BY idresultado DESC");
+    $resultados = $this->db->query("SELECT res.idresultado, pac.nombre AS nombre_paciente, pro.nombre AS nombre_programa,
+    pac.tipo_estudio AS tipo_estudio,
+	pac.creado_por AS creado_por,
+    med.nombre AS nombre_medico, p.nombre AS nombre_estudio,
+	meda.nombre AS nombre_medico_tratante
+    FROM resultados res 
+    INNER JOIN pacientes pac ON pac.idpaciente = res.idpaciente
+    INNER JOIN programas pro ON pro.idprograma = pac.idprograma
+    INNER JOIN usuario med ON med.idusuario = pac.medico_tratante
+    INNER JOIN usuario meda ON meda.idusuario = pac.medico_asociado
+    INNER JOIN persona p ON p.idpersona = pac.estudio WHERE med.idusuario = $idmedico or meda.idusuario = $idmedico");
+        return $resultados;
+  }
+  public function getCallCenter($idcallcenter){
+    //$resultados = $this->db->query("SELECT * FROM resultados ORDER BY idresultado DESC");
+    $resultados = $this->db->query("SELECT res.idresultado, pac.nombre AS nombre_paciente, pro.nombre AS nombre_programa,
+    pac.tipo_estudio AS tipo_estudio,
+	pac.creado_por AS creado_por,
+    med.nombre AS nombre_medico, p.nombre AS nombre_estudio,
+	meda.nombre AS nombre_medico_tratante
+    FROM resultados res 
+    INNER JOIN pacientes pac ON pac.idpaciente = res.idpaciente
+    INNER JOIN programas pro ON pro.idprograma = pac.idprograma
+    INNER JOIN usuario med ON med.idusuario = pac.medico_tratante
+    INNER JOIN usuario meda ON meda.idusuario = pac.medico_asociado
+    INNER JOIN persona p ON p.idpersona = pac.estudio WHERE pac.creado_por = $idcallcenter ");
+        return $resultados;
   }
 
 }

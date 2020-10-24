@@ -54,8 +54,10 @@ class Programa{
 	}
 
   public function save(){
-    $sql = "INSERT INTO programas VALUES (NULL, '{$this->getNombre()}', '{$this->getFechaCreacion()}', {$this->getEstatus()}), '{$this->getObservaciones()}'";
+    $sql = "INSERT INTO programas VALUES (NULL, '{$this->getNombre()}', '{$this->getFechaCreacion()}', {$this->getEstatus()}, '{$this->getObservaciones()}')";
     $save = $this->db->query($sql);
+	//echo var_dump($sql);
+    //die();
     $result = false;
     if ($save) {
       $result = true;
@@ -85,8 +87,15 @@ class Programa{
     return $programas;
   }
 
+  public function getPrograma($idprograma){
+    $sql = "SELECT * FROM programas WHERE idprograma= $idprograma";
+    $programa = $this->db->query($sql);
+
+    return $programa->fetch_object();
+  }
+  
   public function getOne(){
-    $sql = "SELECT * FROM programas WHERE idprograma= {$this->getId()}";
+    $sql = "SELECT * FROM programas WHERE idprograma= {$this->idprograma}";
     $programa = $this->db->query($sql);
 
     return $programa->fetch_object();

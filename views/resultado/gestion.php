@@ -8,7 +8,7 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <h1 class="box-title">Resultados<a class="btn btn-success" id="btnagregar"
-                                href="<?=base_url?>?controller=ResultadoController&action=registro"><i class="fa fa-plus-circle"></i> Agregar</a>
+                                href="<?=base_url?>?controller=ResultadoController&action=registro" style="display:<?=Utils::isAdmin() || Utils::isCallCenter() || Utils::isCoordinador() ? 'block' : 'none';?>"><i class="fa fa-plus-circle"></i> Agregar</a>
                         </h1>
                         <div class="box-tools pull-right">
                         </div>
@@ -22,8 +22,10 @@
                                 <th class="th-sm">Paciente</th>
                                 <th class="th-sm">Programa</th>
                                 <th class="th-sm">Médico</th>
+                                <th class="th-sm">Médico Tratante</th>
                                 <th class="th-sm">Cliente</th>
                                 <th class="th-sm">Tipo estudio</th>
+                                <th class="th-sm">Creado por</th>
                                 <th style="display:none"></th>
                             </thead>
                             <tbody>
@@ -35,8 +37,10 @@
                                     <td><?=$res->nombre_paciente?></td>
                                     <td><?=$res->nombre_programa?></td>
                                     <td><?=$res->nombre_medico?></td>
+                                    <td><?=$res->nombre_medico_tratante?></td>
                                     <td><?=$res->nombre_estudio?></td>
                                     <td><?=$res->tipo_estudio?></td>
+                                    <td><?=$res->creado_por?></td>
                                 </tr>
                                 <?php endwhile; ?>
                             </tbody>

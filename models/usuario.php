@@ -170,8 +170,13 @@ class Usuario{
     return $usuario->fetch_object();
   }
 
-  public function getMedicos(){
-    $medicos = $this->db->query("SELECT * FROM usuario WHERE tipo LIKE '%medico%'");
+  public function getMedicosAsociados(){
+    $medicos = $this->db->query("SELECT * FROM usuario WHERE tipo LIKE '%medico asociado%'");
+    return $medicos;
+  }
+  
+  public function getMedicosTratantes(){
+    $medicos = $this->db->query("SELECT * FROM usuario WHERE tipo LIKE '%medico tratante%'");
     return $medicos;
   }
 
@@ -221,6 +226,38 @@ class Usuario{
     $admin = $this->db->query($sql);
 
     return $admin;
+  }
+  
+  public function callCenter($idcallcenter){
+    //SELECT u.* FROM usuario u INNER JOIN usuario_permiso up ON up.idusuario = u.idusuario AND u.idusuario = 56 AND up.idpermiso = 6
+    $sql = "SELECT u.*, up.idpermiso as idpermiso FROM usuario u INNER JOIN usuario_permiso up ON up.idusuario = u.idusuario AND up.idpermiso = 6 AND u.idusuario = {$idcallcenter}";
+    $callcenter = $this->db->query($sql);
+
+    return $callcenter;
+  }
+  
+  public function coordinador($idcoordinador){
+    //SELECT u.* FROM usuario u INNER JOIN usuario_permiso up ON up.idusuario = u.idusuario AND u.idusuario = 56 AND up.idpermiso = 2
+    $sql = "SELECT u.*, up.idpermiso as idpermiso FROM usuario u INNER JOIN usuario_permiso up ON up.idusuario = u.idusuario AND up.idpermiso = 2 AND u.idusuario = {$idcoordinador}";
+    $coordinador = $this->db->query($sql);
+
+    return $coordinador;
+  }
+
+  public function medicoTratante($idmedico){
+    //SELECT u.* FROM usuario u INNER JOIN usuario_permiso up ON up.idusuario = u.idusuario AND u.idusuario = 56 AND up.idpermiso = 8
+    $sql = "SELECT u.*, up.idpermiso as idpermiso FROM usuario u INNER JOIN usuario_permiso up ON up.idusuario = u.idusuario AND up.idpermiso = 8 AND u.idusuario = {$idmedico}";
+    $medicot = $this->db->query($sql);
+
+    return $medicot;
+  }
+  
+   public function medicoAsociado($idmedicoa){
+    //SELECT u.* FROM usuario u INNER JOIN usuario_permiso up ON up.idusuario = u.idusuario AND u.idusuario = 56 AND up.idpermiso = 9
+    $sql = "SELECT u.*, up.idpermiso as idpermiso FROM usuario u INNER JOIN usuario_permiso up ON up.idusuario = u.idusuario AND up.idpermiso = 9 AND u.idusuario = {$idmedicoa}";
+    $medicoa = $this->db->query($sql);
+
+    return $medicoa;
   }
 
 }

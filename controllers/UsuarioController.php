@@ -52,11 +52,13 @@ class UsuarioController{
   }
 
   public function gestion(){
-    Utils::isAdmin();
+    if(Utils::isAdmin()){
     $usuario = new Usuario();
-
     $usuarios = $usuario->getAll();
     require_once 'views/usuario/gestion.php';
+	}else{
+		header("Location:".base_url."?controller=InicioController&action=index");
+	}
   }
 
   public function perfil(){
