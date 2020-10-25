@@ -192,7 +192,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url?>?controller=PersonaController&action=clientes" style="display:<?=Utils::isAdmin() ? 'block' : 'none';?>">
+                        <a href="<?=base_url?>?controller=PersonaController&action=clientes" style="display:<?=Utils::isAdmin() || Utils::isCoordinador() ? 'block' : 'none';?>">
                             <i class="fa fa-group"></i>
                             <span>Gestion de Clientes</span>
                         </a>

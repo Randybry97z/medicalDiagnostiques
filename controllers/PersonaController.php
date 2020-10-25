@@ -66,7 +66,7 @@ class PersonaController{
 
   public function clientes(){
 	  
-	if(Utils::isAdmin()){
+	if(Utils::isAdmin()|| Utils::isCoordinador()){
     $persona = new Persona();
 
     $clientes = $persona->getClientes();
@@ -97,9 +97,10 @@ class PersonaController{
       $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : false;
       $contacto_2 = isset($_POST['contacto_2']) ? $_POST['contacto_2'] : false;
       $programas = isset($_POST['programas']) ? $_POST['programas'] : false;
+	  $idusuario = isset($_POST['creado_por']) ? $_POST['creado_por'] : false;
 
 
-      if($nombre && $correo && $telefono && $contacto){
+      if($nombre){
       $persona = new Persona();
       $persona->setNombre($nombre);
       $persona->setContacto($contacto);
@@ -107,6 +108,7 @@ class PersonaController{
       $persona->setTelefono($telefono);
       $persona->setTipo($tipo);
       $persona->setContacto2($contacto_2);
+	  $persona->setUsuario($idusuario);
       if(isset($_GET['id'])){
           $id = $_GET['id'];
           $persona->setId($id);

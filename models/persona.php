@@ -11,6 +11,7 @@ class Persona{
   private $tipo;
   private $idprograma;
   private $db;
+  private $idusuario;
 
   public function __construct(){
     $this->db = Database::connect();
@@ -79,9 +80,18 @@ class Persona{
 	public function setTipo($tipo){
 		$this->tipo = $this->db->real_escape_string($tipo);
 	}
+	
+	public function getUsuario(){
+		return $this->idusuario;
+	}
+
+	public function setUsuario($idusuario){
+		$this->idusuario = $idusuario;
+	}
+
 
   public function saveCliente(){
-    $sql = "INSERT INTO persona VALUES (NULL, '{$this->getNombre()}', '{$this->getContacto()}', '{$this->getEmail()}', '{$this->getTelefono()}', 1, 'Cliente', '{$this->getContacto2()}' ,NULL)";
+    $sql = "INSERT INTO persona VALUES (NULL, '{$this->getNombre()}', '{$this->getContacto()}', '{$this->getEmail()}', '{$this->getTelefono()}', 1, 'Cliente', '{$this->getContacto2()}' ,NULL ,{$this->getUsuario()})";
 	$save = $this->db->query($sql);
 	//echo var_dump($sql);
     //die();
@@ -139,7 +149,7 @@ class Persona{
 
   public function getOne(){
     $persona = $this->db->query("
-	SELECT * FROM persona WHERE idpersona = {$this->getId()}");
+	SELECT p.*, u.idusuario as idusuario, u.nombre as usuario_nombre FROM persona p INNER JOIN usuario u ON p.idusuario = u.idusuario WHERE idpersona = {$this->getId()}");
     return $persona->fetch_object();
   }
 

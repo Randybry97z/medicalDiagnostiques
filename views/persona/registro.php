@@ -19,6 +19,8 @@
             </div>
             <div class="panel-body" id="formularioregistros">
               <form action="<?=base_url?>?controller=PersonaController&action=save" name="formulario" id="formulario" method="POST">
+				<input type="hidden" name="creado_por" id="creado_por"
+                                value="<?=$_SESSION['identity']->idusuario?>">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Nombre</label>
                   <input type="hidden" class="form-control" id="idpersona" name="idpersona">
@@ -40,6 +42,7 @@
                   <button type="submit" class="btn btn-md btn-primary" id="btnGuardar">Guardar</button>
                   <button class="btn btn-md btn-danger" onclick="cancelar()" id="btnCancelar">Cancelar</button>
                 </div>
+				
               </form>
             </div>
           </div>
