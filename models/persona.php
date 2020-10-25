@@ -80,9 +80,11 @@ class Persona{
 		$this->tipo = $this->db->real_escape_string($tipo);
 	}
 
-  public function save(){
-    $sql = "INSERT INTO persona VALUES (NULL, '{$this->getNombre()}', '{$this->getContacto()}', '{$this->getEmail()}', '{$this->getTelefono()}', 1, '{$this->getTipo()}', '{$this->getContacto2()}')";
-    $save = $this->db->query($sql);
+  public function saveCliente(){
+    $sql = "INSERT INTO persona VALUES (NULL, '{$this->getNombre()}', '{$this->getContacto()}', '{$this->getEmail()}', '{$this->getTelefono()}', 1, 'Cliente', '{$this->getContacto2()}' ,NULL)";
+	$save = $this->db->query($sql);
+	//echo var_dump($sql);
+    //die();
     $result = false;
     if ($save) {
       $result = true;
@@ -92,17 +94,17 @@ class Persona{
 
   public function save_programas($idprograma){
     $insert = "INSERT INTO clientes_programas VALUES (NULL, {$this->getId()}, {$idprograma} )";
-/*    echo var_dump($insert);
-    die();*/
+    //echo var_dump($insert);
+    //die();
     $save = $this->db->query($insert);
   }
 
 
   public function editar(){
-    $sql = "UPDATE persona SET idpersona = {$this->getId()}, nombre = '{$this->getNombre()}', contacto = '{$this->getContacto()}', correo = '{$this->getEmail()}', telefono = {$this->getTelefono()}, estatus = {$this->getEstatus()}, tipo = '{$this->getTipo()}', contacto_2 = '{$this->getContacto2()}' WHERE idpersona={$this->idpersona} ;";
-    $save = $this->db->query($sql);
-
-
+    $sql = "UPDATE persona SET idpersona = {$this->getId()}, nombre = '{$this->getNombre()}', contacto = '{$this->getContacto()}', correo = '{$this->getEmail()}', telefono = '{$this->getTelefono()}', estatus = {$this->getEstatus()}, tipo = '{$this->getTipo()}', contacto_2 = '{$this->getContacto2()}' WHERE idpersona={$this->idpersona} ;";
+    //echo var_dump($sql);
+    //die();
+	$save = $this->db->query($sql);
     $result = false;
     if ($save) {
       $result = true;
@@ -136,7 +138,8 @@ class Persona{
   }
 
   public function getOne(){
-    $persona = $this->db->query("SELECT * FROM persona WHERE idpersona= {$this->getId()}");
+    $persona = $this->db->query("
+	SELECT * FROM persona WHERE idpersona = {$this->getId()}");
     return $persona->fetch_object();
   }
 

@@ -55,7 +55,7 @@ class ProgramaController{
       $clientes = isset($_POST['clientes']) ? $_POST['clientes'] : false;
       $observaciones = isset($_POST['observaciones']) ? $_POST['observaciones'] : false;
 
-      if($nombre && $fecha_creacion){
+      if($nombre){
       $programa = new Programa();
       $programa->setNombre($nombre);
       $programa->setFechaCreacion($fecha_creacion);

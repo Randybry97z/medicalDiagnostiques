@@ -99,7 +99,7 @@ class PersonaController{
       $programas = isset($_POST['programas']) ? $_POST['programas'] : false;
 
 
-      if($nombre && $correo && $telefono && $tipo && $contacto){
+      if($nombre && $correo && $telefono && $contacto){
       $persona = new Persona();
       $persona->setNombre($nombre);
       $persona->setContacto($contacto);
@@ -117,7 +117,7 @@ class PersonaController{
         }
 
       }else{
-        $save = $persona->save();
+        $save = $persona->saveCliente();
       }
 
 

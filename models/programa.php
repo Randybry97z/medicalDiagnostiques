@@ -55,9 +55,10 @@ class Programa{
 
   public function save(){
     $sql = "INSERT INTO programas VALUES (NULL, '{$this->getNombre()}', '{$this->getFechaCreacion()}', {$this->getEstatus()}, '{$this->getObservaciones()}')";
-    $save = $this->db->query($sql);
-	//echo var_dump($sql);
+    //echo var_dump($sql);
     //die();
+	$save = $this->db->query($sql);
+	
     $result = false;
     if ($save) {
       $result = true;
@@ -67,14 +68,15 @@ class Programa{
 
   public function save_clientes($idcliente){
     $insert = "INSERT INTO clientes_programas VALUES (NULL, {$idcliente}, {$this->getId()} )";
-    /*echo var_dump($insert);
-    die();*/
     $save = $this->db->query($insert);
   }
 
   public function editar(){
-    $sql = "UPDATE programas SET idprograma = {$this->getId()}, nombre = '{$this->getNombre()}', estatus = 1, observaciones = '{$this->getObservaciones()}' WHERE idprograma={$this->idprograma} ;";
-    $save = $this->db->query($sql);
+    $sql = "UPDATE programas SET idprograma = {$this->getId()}, nombre = '{$this->getNombre()}'  WHERE idprograma={$this->idprograma};";
+    //echo var_dump($sql);
+    //die();
+	$save = $this->db->query($sql);
+	
     $result = false;
     if ($save) {
       $result = true;
