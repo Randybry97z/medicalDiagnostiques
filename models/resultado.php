@@ -1966,6 +1966,7 @@ public function getResultadoarchivo(){
     $resultados = $this->db->query("SELECT res.idresultado, pac.nombre AS nombre_paciente, pro.nombre AS nombre_programa,
     pac.tipo_estudio AS tipo_estudio,
 	pac.creado_por AS creado_por,
+	pac.folio_id AS folio_id,
     med.nombre AS nombre_medico, p.nombre AS nombre_estudio,
 	meda.nombre AS nombre_medico_tratante
     FROM resultados res 
@@ -1981,6 +1982,7 @@ public function getResultadoarchivo(){
     $resultados = $this->db->query("SELECT res.idresultado, pac.nombre AS nombre_paciente, pro.nombre AS nombre_programa,
     pac.tipo_estudio AS tipo_estudio,
 	pac.creado_por AS creado_por,
+	pac.folio_id AS folio_id,
     med.nombre AS nombre_medico, p.nombre AS nombre_estudio,
 	meda.nombre AS nombre_medico_tratante
     FROM resultados res 
