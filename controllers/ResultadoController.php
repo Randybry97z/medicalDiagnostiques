@@ -595,7 +595,7 @@ class ResultadoController{
            </tr>
            <tr>
            <td>Número de activación:</td>
-           <td>kejrgyu23ig</td>
+           <td>'.$res->activacion_farma.'</td>
            </tr>
           </tbody>
          </table>

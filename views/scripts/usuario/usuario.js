@@ -4,7 +4,7 @@ const button_a = document.getElementById('activar');
 function desactivar(idusuario) {
     bootbox.confirm("¿Está Seguro de desactivar el usuario?", function(result) {
         if (result) {
-            fetch('http://localhost/mdt_final/?controller=UsuarioController&action=desactivar&id='+idusuario)
+            fetch(base_url+'?controller=UsuarioController&action=desactivar&id='+idusuario)
                 .then(res=>{
                     location.reload()
                 })
@@ -16,7 +16,7 @@ function desactivar(idusuario) {
 function activar(idusuario) {
     bootbox.confirm("¿Está Seguro de activar el usuario?", function(result) {
         if (result) {
-            fetch('http://localhost/mdt_final/?controller=UsuarioController&action=activar&id='+idusuario)
+            fetch(base_url+'?controller=UsuarioController&action=activar&id='+idusuario)
                 .then(res=>{
                     location.reload()
                     console.log(res)

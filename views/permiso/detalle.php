@@ -23,7 +23,7 @@
                   </thead>
                   <tbody>
                     <?php while ($usr=$user->fetch_object()): ?>
-                      <tr><td class="h3"><a href="<?=base_url?>?controller=UsuarioController&action=perfil&id=<?=$usr->idusuario?>"><?=$usr->nombre;?></a></td><td><button class="btn btn-danger" id="elim" onclick="deleteUsuarioPermiso(<?=$usr->id_up?>)">Eliminar usuario del permiso</button></td></tr>
+                      <tr><td class="h3"><a href="<?=base_url?>?controller=UsuarioController&action=perfil&id=<?=$usr->idusuario?>"><?=$usr->nombre;?></a></td><td><button class="btn btn-danger" id="elim" onclick="deleteUsuarioPermiso(<?=$usr->idup?>)">Eliminar usuario del permiso</button></td></tr>
                     <?php endwhile; ?>
                   </tbody>
                 </table>

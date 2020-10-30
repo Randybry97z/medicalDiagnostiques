@@ -58,7 +58,7 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre de representante</label>
                             <input type="text" class="form-control" name="activacion_representante"
-                                id="activacion_representante" placeholder="Número de activación de Representante">
+                                id="activacion_representante" placeholder="Nombre del representante">
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre px</label>

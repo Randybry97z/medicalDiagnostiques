@@ -164,6 +164,11 @@ class Usuario{
     $usuarios = $this->db->query("SELECT * FROM usuario ORDER BY idusuario DESC");
 		return $usuarios;
   }
+  
+  public function getAllAsignado(){
+    $usuarios = $this->db->query("SELECT * FROM usuario WHERE idusuario != 70 ORDER BY idusuario DESC");
+		return $usuarios;
+  }
 
   public function getOne(){
     $usuario = $this->db->query("SELECT * FROM usuario WHERE idusuario= {$this->getId()}");
@@ -172,6 +177,7 @@ class Usuario{
 
   public function getMedicosAsociados(){
     $medicos = $this->db->query("SELECT * FROM usuario WHERE tipo LIKE '%medico asociado%'");
+    
     return $medicos;
   }
   
@@ -192,7 +198,7 @@ class Usuario{
 
   public function deletePermiso($id_permiso){
     $permiso = $this->db->query("DELETE FROM usuario_permiso WHERE usuario_permiso.idusuario_permiso = {$id_permiso}");
-
+    
     return $permiso;
   }
 

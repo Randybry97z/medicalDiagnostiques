@@ -28,7 +28,7 @@ class LaboratorioController{
 	if(Utils::isAdmin()||Utils::isCoordinador()||Utils::isCallCenter()){
     $laboratorio = new Laboratorio();
 
-    $laboratorios = $laboratorio->getAll();
+    $laboratorios = $laboratorio->getAllAsignar();
     require_once 'views/laboratorio/gestion.php';
 	}else{
 		header("Location:".base_url."?controller=InicioController&action=index");

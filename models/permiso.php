@@ -62,7 +62,7 @@ class Permiso{
   }
 
   public function getUsers(){
-    $sql = "SELECT u.nombre as nombre, u.idusuario as idusuario, up.idpermiso as idpermiso, up.idusuario_permiso as id_up FROM usuario u INNER JOIN usuario_permiso up ON u.idusuario = up.idusuario WHERE up.idpermiso = {$this->idpermiso}";
+    $sql = "SELECT u.nombre as nombre, u.idusuario as idusuario, up.idpermiso as idpermiso, up.idusuario_permiso as idup FROM usuario u INNER JOIN usuario_permiso up ON u.idusuario = up.idusuario WHERE up.idpermiso = {$this->idpermiso}";
     $users = $this->db->query($sql);
 
     return $users;

@@ -1928,6 +1928,7 @@ public function getResultadoarchivo(){
     //$resultados = $this->db->query("SELECT * FROM resultados ORDER BY idresultado DESC");
     $resultados = $this->db->query("SELECT res.idresultado, pac.nombre AS nombre_paciente, pro.nombre AS nombre_programa,
     pac.tipo_estudio AS tipo_estudio,
+	pac.folio_id AS folio_id,
     med.nombre AS nombre_medico, 
 	p.nombre AS nombre_estudio,
 	meda.nombre AS nombre_medico_tratante,
@@ -1945,7 +1946,8 @@ public function getResultadoarchivo(){
   public function getOne(){
     $resultado = $this->db->query("SELECT res.*, 
     pac.nombre AS nombre_paciente, pac.edad AS edad_paciente, pac.folio_id AS folio_paciente, pac.tipo_estudio AS tipo_estudio,
-    pro.nombre AS nombre_programa,
+    pac.activacion_farma AS activacion_farma,
+	pro.nombre AS nombre_programa,
     med.nombre AS nombre_medico, p.nombre AS nombre_estudio,
 	med.nombre AS nombre_medico_tratante,
 	meda.nombre AS nombre_medico_asociado,

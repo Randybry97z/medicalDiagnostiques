@@ -231,6 +231,13 @@ class Laboratorio{
 
     return $laboratorios;
   }
+  
+  public function getAllAsignar(){
+    $sql = "SELECT l.* ,u.idusuario as idusuario, u.nombre as usuario_nombre FROM laboratorio l INNER JOIN usuario u ON l.idusuario = u.idusuario WHERE idlaboratorio != 418";
+    $laboratorios = $this->db->query($sql);
+
+    return $laboratorios;
+  }
 
   public function getPrograma($idprograma){
     $sql = "SELECT laboratorio.estudio, programas.nombre as programa FROM `laboratorio` INNER JOIN programas ON laboratorio.estudio = programas.idprograma";

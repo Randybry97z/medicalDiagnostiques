@@ -224,13 +224,15 @@
                                 <option value="<?=$medt->idusuario?>"
                                     <?=isset($medt) && is_object($medt) && $medt->idusuario == $pac->medico_tratante ? 'selected' : '';?>>
                                     <?=$medt->nombre?></option>
+									
+                            <?php endwhile; ?>
                             </select>
                         </div>
-												
-                        <div class="form-group form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="correo_medico"
+						
+						<div class="form-group form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="correo_medico"
                             disabled="true">
                             <label>Correo del médico tratante</label>
-                            <?php $medico = Utils::showEmail($medt->idusuario);?>
+                            <?php $medico = Utils::showEmail($pac->medico_tratante);?>
                             <?php while($m = $medico->fetch_object()): ?>
                             <?php if($m->correo): ?>
                             <div class="container form-control"><a href="mailto:<?=$m->correo?>"><?=$m->correo?></a>
@@ -238,9 +240,10 @@
                             <?php else: ?>
                             <div class="container form-control">Sin correo electrónico</div>
                             <?php endif; ?>
-                            <?php endwhile; ?>
-                            <?php endwhile ?>
+							<?php endwhile; ?>
                         </div>
+												
+
 						
 						<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Médico Asociado</label>
@@ -251,23 +254,24 @@
                                 <option value="<?=$meda->idusuario?>"
                                     <?=isset($meda) && is_object($meda) && $meda->idusuario == $pac->medico_asociado ? 'selected' : '';?>>
                                     <?=$meda->nombre?></option>
+								
+                            <?php endwhile; ?>
                             </select>
                         </div>
-												
-                        <div class="form-group form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="correo_medico"
+						<div class="form-group form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="correo_medico"
                             disabled="true">
                             <label>Correo del médico asociado</label>
-                            <?php $medico = Utils::showEmail($meda->idusuario);?>
+                            <?php $medico = Utils::showEmail($pac->medico_asociado);?>
                             <?php while($m = $medico->fetch_object()): ?>
-                            <?php if($m->correo): ?>
+                            <?php if($m->correo != "porasignar@porasignar.com"): ?>
                             <div class="container form-control"><a href="mailto:<?=$m->correo?>"><?=$m->correo?></a>
                             </div>
                             <?php else: ?>
                             <div class="container form-control">Sin correo electrónico</div>
                             <?php endif; ?>
-                            <?php endwhile; ?>
                             <?php endwhile ?>
-                        </div>
+                        </div>		
+                        
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label># Factura asociado</label>
                             <input type="text" class="form-control" name="factura_asociado" id="factura_asociado"

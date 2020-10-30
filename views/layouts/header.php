@@ -203,9 +203,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url?>?controller=ResultadoController&action=gestion" style="display:<?=Utils::isAdmin() || Utils::isCoordinador() || Utils::isCallCenter() || Utils::isMedicoTratante() || Utils::isMedicoAsociado()? 'block' : 'none';?>">
+					<?php if(Utils::isAdmin()):?>
+                        <a href="<?=base_url?>?controller=ResultadoController&action=gestion">
                             <i class="fa fa-tasks"></i> <span>Captura de resultados</span>
                         </a>
+					<?php else:?>
+						<a href="<?=base_url?>?controller=ResultadoController&action=gestion&idusuario=<?=$_SESSION['identity']->idusuario?>">
+                            <i class="fa fa-tasks"></i> <span>Captura de resultados</span>
+                        </a>
+						
+                    <?php endif;  ?>
                     </li>
 
                     <?php endif;  ?>

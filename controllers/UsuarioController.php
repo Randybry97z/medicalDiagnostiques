@@ -54,7 +54,7 @@ class UsuarioController{
   public function gestion(){
     if(Utils::isAdmin()){
     $usuario = new Usuario();
-    $usuarios = $usuario->getAll();
+    $usuarios = $usuario->getAllAsignado();
     require_once 'views/usuario/gestion.php';
 	}else{
 		header("Location:".base_url."?controller=InicioController&action=index");
@@ -153,7 +153,7 @@ class UsuarioController{
           $_SESSION['updatePassword'] = "failed";
     }
 
-    header("Location:".base_url.'controller=UsuarioController&action=perfil&id='.$id);
+    header("Location:".base_url.'?controller=UsuarioController&action=perfil&id='.$id);
   }
 
   public function login(){

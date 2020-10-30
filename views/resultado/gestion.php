@@ -18,7 +18,7 @@
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                             <thead>
-                                <th class="th-sm">ID</th>
+                                <th class="th-sm">Folio</th>
                                 <th class="th-sm">Paciente</th>
                                 <th class="th-sm">Programa</th>
                                 <th class="th-sm">Médico</th>
@@ -32,7 +32,7 @@
                                 <?php while ($res=$resultados->fetch_object()): ?>
                                 <tr>
                                     <td><a
-                                            href="<?=base_url?>?controller=ResultadoController&action=detalle&id=<?=$res->idresultado?>"><?=$res->idresultado?></a>
+                                            href="<?=base_url?>?controller=ResultadoController&action=detalle&id=<?=$res->idresultado?>"><?=$res->folio_id?></a>
                                     </td>
                                     <td><?=$res->nombre_paciente?></td>
                                     <td><?=$res->nombre_programa?></td>
