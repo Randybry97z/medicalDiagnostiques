@@ -58,8 +58,54 @@ class ResultadoController{
     }
   }
 
+  public function editarimagen(){
+    if(isset($_POST)){
+  
+        $resultado = new Resultado();
+        // Guardar resultados
+        if(isset($_FILES['resultado_archivo'])){
+          $file = $_FILES['resultado_archivo'];
+          $file_name = $_FILES['resultado_archivo']['name'];
+          $mimetype = $_FILES['resultado_archivo']['type'];
+  
+          if ($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/png') {
+  
+              if (!is_dir('uploads/resultados/imgs')) {
+                mkdir('uploads/resultados/imgs', 0777, true);
+              }
+              move_uploaded_file($file['tmp_name'], 'uploads/resultados/imgs/'.$file_name);
+              $resultado->setResultadoarchivo($file_name);
+              //echo var_dump($paciente);
+              //die();
+          }
+        }
+  
+          if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $resultado->setIdresultado($id);
+            $save = $resultado->editarimagen();
+          }
+  
+          if ($save) {
+            $_SESSION['register'] = "complete";
+          }else {
+            $_SESSION['register'] = "failed";
+          }
+        }else{
+          $_SESSION['register'] = "failed";
+        }
+      
+  
+      header("Location:".base_url.'?controller=ResultadoController&action=gestion');
+  
+    } //FIN EDITAR IMAGEN
+    
  public function save(){
   if(isset($_POST)){
+
+    //echo var_dump($_POST);
+    
+    //die();
       $radio_hiper_der = isset($_POST['radio_hiper_der']) ? $_POST['radio_hiper_der'] : false;
       $radio_hiper_izq = isset($_POST['radio_hiper_izq']) ? $_POST['radio_hiper_izq'] : false;
       $radio_power_der = isset($_POST['radio_power_der']) ? $_POST['radio_power_der'] : false;
@@ -475,6 +521,9 @@ class ResultadoController{
       $resultado->setTotal_der($total_der);
       $resultado->setHallazgos_masei($hallazgos_masei);
 
+      //echo var_dump($resultado);
+    
+       //die();
       // Guardar resultados
       if(isset($_FILES['resultado_archivo'])){
         $file = $_FILES['resultado_archivo'];

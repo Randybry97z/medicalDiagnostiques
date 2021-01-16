@@ -26,8 +26,8 @@
                 </div>
 
                 <div class="box-body">
-                    <form action="<?=base_url?>?controller=ResultadoController&action=save&id=<?=$res->idresultado?>" name="formulario"
-                        id="formulario" method="POST" enctype="multipart/form-data">
+                    <form action="<?=base_url?>?controller=ResultadoController&action=save&id=<?=$res->idresultado?>"
+                        name="formulario" id="formulario" method="POST" enctype="multipart/form-data">
 
                         <div class="panel-body table-responsive" id="listadoregistros">
                             <input type="hidden" name="creado_por" id="creado_por"
@@ -3360,7 +3360,7 @@
                                 </div>
                             </div>
                             <div>
-							<?php if(Utils::isMedicoTratante()):?>
+                                <?php if(Utils::isMedicoTratante()):?>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Resultados</label>
                                     <div class="container" id="div_resultados"><a
@@ -3370,21 +3370,39 @@
                                     <input type="hidden" class="form-control" name="resultado_archivo"
                                         id="resultado_archivo">
                                 </div>
-							<?php else:?>
-							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <label>Resultados</label>
-                                    <div class="container" id="div_resultados"><a
-                                            href="<?=base_url.'uploads/resultados/imgs/'.$res->resultado_archivo?>"
-                                            target="_blank"><?=($res->resultado_archivo) ? $res->resultado_archivo : 'Sin resultados' ?></a>
-                                    </div>
-                                    <input type="file" class="form-control" name="resultado_archivo"
-                                        id="resultado_archivo" >
-                                </div>
-							<?php endif;?>
+                                <?php else:?>
+
+                                <?php endif;?>
                             </div>
                         </div>
 
                     </form>
+
+                    <form
+                        action="<?=base_url?>?controller=ResultadoController&action=editarimagen&id=<?=$res->idresultado?>"
+                        name="formulario" id="formulario" method="POST" enctype="multipart/form-data">
+                        <label>Resultados</label>
+                        <div class="container" id="div_resultados"><a
+                                href="<?=base_url.'uploads/resultados/imgs/'.$res->resultado_archivo?>"
+                                target="_blank"><?=($res->resultado_archivo) ? $res->resultado_archivo : 'Sin resultados' ?></a>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" class="form-control" name="resultado_archivo" style="display:block"
+                                id="resultado_archivo">
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 col-md-2">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit" id="btnSave"><i
+                                            class="fa fa-save"></i>
+                                        Subir resultado</button>
+                                </div>
+                            </div>
+                       
+                        </div>
+                    </form>
+
+
                 </div>
             </div>
         </div>

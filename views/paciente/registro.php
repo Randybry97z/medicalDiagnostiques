@@ -2,6 +2,12 @@
 
 <!--Contenido-->
 <!-- Content Wrapper. Contains page content -->
+<style>
+input:invalid:required {
+ border: 2px dashed red;
+}
+
+</style>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -44,41 +50,49 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Folio ID</label>
-                            <input type="text" class="form-control" name="folio_id" id="folio_id" placeholder="Folio">
+                            <input type="text" class="form-control" name="folio_id" id="folio_id" placeholder="Folio" required>
+							<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Folio</label>
-                            <input type="text" class="form-control" name="folio" id="folio" placeholder="Folio">
+                            <input type="text" class="form-control" name="folio" id="folio" placeholder="Folio" required>
+							<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label># de activación farma</label>
                             <input type="text" class="form-control" name="activacion_farma" id="activacion_farma"
-                                placeholder="Número de activación de Farma">
+                                placeholder="Número de activación de Farma" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre de representante</label>
                             <input type="text" class="form-control" name="activacion_representante"
-                                id="activacion_representante" placeholder="Nombre del representante">
+                                id="activacion_representante" placeholder="Nombre del representante" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre px</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100"
                                 placeholder="Nombre de PX" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre de clínica</label>
                             <input type="text" class="form-control" name="clinica" id="clinica" maxlength="100"
                                 placeholder="Nombre de clínica" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Teléfono fijo</label>
                             <input type="text" class="form-control" name="telefono" id="telefono" maxlength="10"
-                                placeholder="Teléfono fijo">
+                                placeholder="Teléfono fijo" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Teléfono celular</label>
                             <input type="text" class="form-control" name="movil" id="movil" maxlength="10"
-                                placeholder="Teléfono celular">
+                                placeholder="Teléfono celular" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Estado</label>
@@ -116,16 +130,19 @@
                                 <option value="Yucatan">Yucatán</option>
                                 <option value="Zacatecas">Zacatecas</option>
                             </select>
+							<small class="text-muted">Seleccionar opción de lista desplegable</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Ciudad</label>
                             <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad"
                                 required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Dirección</label>
                             <input type="text" class="form-control" name="direccion" id="direccion"
                                 placeholder="Dirección" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Sexo</label>
@@ -134,15 +151,18 @@
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
                             </select>
+							<small class="text-muted">Seleccionar opción de lista desplegable</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Edad</label>
                             <input type="text" class="form-control" name="edad" id="edad" placeholder="Edad" required>
+							<small class="text-muted">Se calcula solo</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Fecha de nacimiento</label>
                             <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento"
                                 placeholder="Fecha de nacimiento" required>
+								<small class="text-muted">Seleccionar fecha</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Laboratorio:</label>
@@ -153,31 +173,37 @@
                                 <option value="<?=$lab->idlaboratorio?>"><?=$lab->nombre?></option>
                                 <?php endwhile ?>
                             </select>
+							<small class="text-muted">Seleccionar laboratorio</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Fecha de captura</label>
                             <input type="date" class="form-control" name="fecha_captura" id="fecha_captura"
                                 placeholder="Fecha de captura" value="<?php echo date("Y-m-d");?>">
+								<small class="text-muted">Se calcula solo</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Fecha de cita</label>
                             <input type="date" class="form-control" name="fecha_cita" id="fecha_cita"
                                 placeholder="Fecha de cita" required>
+								<small class="text-muted">Seleccionar fecha</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Hora de cita</label>
                             <input type="time" class="form-control" name="hora_cita" id="hora_cita" placeholder="0:00"
                                 required>
+								<small class="text-muted">Seleccionar hora</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Fecha de confirmación de cita</label>
+                            <label>Confirmación de cita</label>
                             <input type="text" class="form-control" name="fecha_confirmacion" id="fecha_confirmacion"
                                 placeholder="Fecha de confirmación de cita">
+								<small class="text-muted">Se calcula solo</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Tipo de cupón</label>
                             <input type="text" class="form-control" name="tipo_cupon" id="tipo_cupon"
-                                placeholder="Tipo de cupón">
+                                placeholder="Tipo de cupón" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Estatus</label>
@@ -187,12 +213,14 @@
                                 <option value="2">Finalizado</option>
                                 <option value="3">Cancelado</option>
                             </select>
+							<small class="text-muted">Seleccionar opción de lista desplegable</small>
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="cancelacion_div"
                             hidden="true">
                             <label>Motivo cancelación</label>
                             <textarea class="form-control" name="motivo_cancelacion" id="motivo_cancelacion"
                                 placeholder="Motivo de cancelacion"></textarea>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Médico Tratante</label>
@@ -203,6 +231,7 @@
                                 <option value="<?=$med->idusuario?>"><?=$med->nombre?></option>
                                 <?php endwhile ?>
                             </select>
+							<small class="text-muted">Seleccionar opción de lista desplegable</small>
                         </div>
 						<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Médico Asociado</label>
@@ -213,16 +242,19 @@
                                 <option value="<?=$med->idusuario?>"><?=$med->nombre?></option>
                                 <?php endwhile ?>
                             </select>
+							<small class="text-muted">Seleccionar opción de lista desplegable</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label># Factura asociado</label>
                             <input type="text" class="form-control" name="factura_asociado" id="factura_asociado"
-                                placeholder="Factura de asociado">
+                                placeholder="Factura de asociado" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label># Factura MDT</label>
                             <input type="text" class="form-control" name="factura_mdt" id="factura_mdt"
-                                placeholder="Factura de MDT">
+                                placeholder="Factura de MDT" required>
+								<small class="text-muted">Caracteres</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Pagado en Factura</label>
@@ -231,11 +263,13 @@
                                 <option value="1">Sí</option>
                                 <option value="0">No</option>
                             </select>
+							<small class="text-muted">Seleccionar opción de lista desplegable</small>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Fecha de pago</label>
                             <input type="date" class="form-control" name="fecha_entrega" id="fecha_entrega"
-                                placeholder="Fecha de entrega" required>
+                                placeholder="Fecha de entrega">
+								<small class="text-muted">Seleccionar fecha</small>
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label>Observaciones</label>

@@ -8,9 +8,11 @@ var estatus = document.getElementById('estatus')
 var motivo_cancelacion = document.getElementById('cancelacion_div')
 
 
+
 edad.setAttribute("disabled","true")
 fecha_captura.setAttribute("disabled","true")
 fecha_confirmacion.setAttribute("disabled","true")
+
 //estatus.addEventListener('change',
 function showCancelacion() {
 	if (estatus.value == 3){

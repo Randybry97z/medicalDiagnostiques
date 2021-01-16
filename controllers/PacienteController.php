@@ -120,7 +120,7 @@ class PacienteController{
       $cita = date($fecha_cita);
       $hour = abs(strtotime($cita) - strtotime($today))/(60*60).'hrs';
 
-      if($idlaboratorio && $nombre && $idprograma && $estudio){
+      if(true){
         //$idlaboratorio && $nombre && $sexo && $edad && $telefono && $estado && $estudio && $medico_tratante
       $paciente = new Paciente();
       $paciente->setCreadoPor($creado_por);
@@ -198,7 +198,8 @@ class PacienteController{
     }else {
       $_SESSION['register'] = "failed";
     }
-    header("Location:".base_url.'?controller=PacienteController&action=programa&idprograma='.$idprograma."&idcliente=".$estudio);
+    //header("Location:".base_url.'?controller=PacienteController&action=detalle&id='.$id);
+	header("Location:".base_url.'?controller=PacienteController&action=programa&idprograma='.$idprograma."&idcliente=".$estudio);
   }
 
 } //FIN CLASE
