@@ -192,7 +192,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Estatus</label>
-                            <input class="form-control" type="text" name="estatus_text" id="estatus_text" value="<?php if($pac->estatus == 0){
+                            <!--<input class="form-control" type="text" name="estatus_text" id="estatus_text" value="<?php if($pac->estatus == 0){
                                 echo 'Por agendar';
                                 }elseif ($pac->estatus == 1){
                                     echo 'Por acudir';
@@ -200,13 +200,21 @@
                                     echo 'Finalizado';
                                 }else{
                                     echo 'Cancelado';
-                                } ?>" disabled="true">
-                            <select class="form-control" name="estatus" id="estatus" style="display: none"
-                                onchange="showCancelacion()">
-                                <option value="0">Por agendar</option>
-                                <option value="1">Por acudir</option>
-                                <option value="2">Finalizado</option>
-                                <option value="3">Cancelado</option>
+                                } ?>" disabled="true">-->
+                            <select class="form-control" name="estatus" id="estatus">
+                                                    <option value="0"
+                                                        <?= $pac->estatus == '0' ? 'selected' : '';?>>
+                                                        Por agendar</option>
+                                                    <option value="1"
+                                                        <?= $pac->estatus == '1' ? 'selected' : '';?>>
+                                                        Por acudir
+                                                    </option>
+                                                    <option value="2"
+                                                        <?= $pac->estatus == '2' ? 'selected' : '';?>>
+                                                        Finalizado</option>
+                                                    <option value="3"
+                                                        <?= $pac->estatus == '3' ? 'selected' : '';?>>
+                                                        Cancelado</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="cancelacion_div"
@@ -346,15 +354,7 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Resultados</label>
-                            <div class="container" id="div_resultados"><a
-                                    href="<?=base_url.'uploads/resultados/'.$pac->resultados?>"
-                                    target="_blank"><?=($pac->resultados) ? $pac->resultados : 'Sin resultados' ?></a>
-                            </div>
-                            <!--Crear input oculto cuando se edite se oculta el div y se puesta el input-->
-                            <input type="file" class="form-control" name="resultados" id="resultados" hidden="true">
-                        </div>
+                        
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Fecha de Envío de Resultados</label>
                             <input type="date" name="fecha_resultados" id="fecha_resultados" class="form-control"
@@ -371,6 +371,30 @@
                                 Guardar</button>
                             <button type="button" class="btn btn-success" id="btnEnviar"><i class="fa fa-save"></i>
                                 Enviar Resultados</button>
+                        </div>
+                    </form>
+					
+					<form
+                        action="<?=base_url?>?controller=PacienteController&action=editarimagen&id=<?=$pac->idpaciente?>" 
+                        name="formulario" id="formulario" method="POST" enctype="multipart/form-data">
+                        <label>Resultados</label>
+                        <div class="container" id="div_resultados"><a
+                                href="<?=base_url.'uploads/resultados/'.$pac->resultados?>"
+                                target="_blank"><?=($pac->resultados) ? $pac->resultados : 'Sin resultados' ?></a>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" class="form-control" name="resultados" style="display:block"
+                                id="resultados">
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 col-md-2">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit" id="btnSave"><i
+                                            class="fa fa-save"></i>
+                                        Subir resultado</button>
+                                </div>
+                            </div>
+                       
                         </div>
                     </form>
                 </div>

@@ -38,6 +38,48 @@ class PacienteController{
 		  header("Location:".base_url."?controller=InicioController&action=index");
 	  }
   }
+  
+   public function editarimagen(){
+    if(isset($_POST)){
+  
+        $paciente = new Paciente();
+        // Guardar resultados
+        if(isset($_FILES['resultados'])){
+          $file = $_FILES['resultados'];
+          $file_name = $_FILES['resultados']['name'];
+          $mimetype = $_FILES['resultados']['type'];
+  
+          if ($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/png' || $mimetype == 'application/pdf') {
+  
+              if (!is_dir('uploads/resultados')) {
+                mkdir('uploads/resultados', 0777, true);
+              }
+              move_uploaded_file($file['tmp_name'], 'uploads/resultados/'.$file_name);
+              $paciente->setResultados($file_name);
+              //echo var_dump($paciente);
+              //die();
+          }
+        }
+  
+          if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $paciente->setId($id);
+            $save = $paciente->editarimagen();
+          }
+  
+          if ($save) {
+            $_SESSION['register'] = "complete";
+          }else {
+            $_SESSION['register'] = "failed";
+          }
+        }else{
+          $_SESSION['register'] = "failed";
+        }
+      
+  
+      header("Location:".base_url.'?controller=PacienteController&action=detalle&id='.$id);
+  
+    } //FIN EDITAR IMAGEN
 
   public function programaCancelados(){
     if (isset($_GET['idprograma']) && isset($_GET['idcliente'])) {
@@ -62,6 +104,8 @@ class PacienteController{
     require_once 'views/paciente/detalle.php';
   }
 
+ 
+	
   public function save(){
     if(isset($_POST)){
       $creado_por = isset($_POST['creado_por']) ? $_POST['creado_por'] : false;
@@ -163,7 +207,7 @@ class PacienteController{
       $paciente->setFechaResultados($fecha_resultados);
       $paciente->setMedicoAsociado($medico_asociado);
       // Guardar resultados
-      if(isset($_FILES['resultados'])){
+      /*if(isset($_FILES['resultados'])){
         $file = $_FILES['resultados'];
         $file_name = $_FILES['resultados']['name'];
         $mimetype = $_FILES['resultados']['type'];
@@ -176,7 +220,23 @@ class PacienteController{
             move_uploaded_file($file['tmp_name'], 'uploads/resultados/'.$file_name);
             $paciente->setResultados($file_name);
         }
-      }
+      }*/
+	   /*if(isset($_FILES['resultados'])){
+        $file = $_FILES['resultados'];
+        $file_name = $_FILES['resultados']['name'];
+        $mimetype = $_FILES['resultados']['type'];
+
+        if ($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/png' || $mimetype == 'application/pdf') {
+
+            if (!is_dir('uploads/resultados')) {
+              mkdir('uploads/resultados', 0777, true);
+            }
+            move_uploaded_file($file['tmp_name'], 'uploads/resultados/'.$file_name);
+            $paciente->setResultados($file_name);
+            echo var_dump($paciente);
+            die();
+        }
+      }*/
 
       if(isset($_GET['id'])){
           $id = $_GET['id'];

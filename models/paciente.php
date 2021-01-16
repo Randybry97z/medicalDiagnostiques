@@ -396,7 +396,7 @@ class Paciente{
   }
 
   public function save(){
-  $sql = "INSERT INTO pacientes VALUES (NULL, {$this->getCreadoPor()}, {$this->getIdLaboratorio()}, '{$this->getNombre()}', '{$this->getSexo()}', {$this->getEdad()}, '{$this->getTelefono()}', '{$this->getMovil()}', '{$this->getCiudad()}', '{$this->getEstado()}','{$this->getDireccion()}','{$this->getEstudio()}', '{$this->getFolioID()}','{$this->getFolio()}','{$this->getActivacionFarma()}', '{$this->getActivacionRepresentante()}', CURDATE(),'{$this->getFechaCita()}',{$this->getEstatus()},'{$this->getCancelacion()}', '{$this->getObservaciones()}',{$this->getMedicoTratante()},NULL,'{$this->getTipoCupon()}','{$this->getFacturaMDT()}','{$this->getFacturaAsociado()}','{$this->getFechaConfirmacion()}', '{$this->getFechaNacimiento()}', '{$this->getClinica()}', '{$this->getPagoFactura()}', {$this->getIdPrograma()}, '{$this->getResultados()}', {$this->getCuponOriginal()}, {$this->getCuponCopia()}, {$this->getConsentimientoOriginal()}, {$this->getConsentimientoCopia()}, {$this->getResultadoOriginal()}, {$this->getResultadoCopia()}, CURDATE(), '{$this->getTipoestudio()}', '{$this->getHoraCita()}',NULL,'{$this->getMedicoAsociado()}')";
+  $sql = "INSERT INTO pacientes VALUES (NULL, {$this->getCreadoPor()}, {$this->getIdLaboratorio()}, '{$this->getNombre()}', '{$this->getSexo()}', {$this->getEdad()}, '{$this->getTelefono()}', '{$this->getMovil()}', '{$this->getCiudad()}', '{$this->getEstado()}','{$this->getDireccion()}','{$this->getEstudio()}', '{$this->getFolioID()}','{$this->getFolio()}','{$this->getActivacionFarma()}', '{$this->getActivacionRepresentante()}', CURDATE(),'{$this->getFechaCita()}',{$this->getEstatus()},'{$this->getCancelacion()}', '{$this->getObservaciones()}',{$this->getMedicoTratante()},NULL,'{$this->getTipoCupon()}','{$this->getFacturaMDT()}','{$this->getFacturaAsociado()}','{$this->getFechaConfirmacion()}', '{$this->getFechaNacimiento()}', '{$this->getClinica()}', '{$this->getPagoFactura()}', {$this->getIdPrograma()}, '{$this->getResultados}' ,{$this->getCuponOriginal()}, {$this->getCuponCopia()}, {$this->getConsentimientoOriginal()}, {$this->getConsentimientoCopia()}, {$this->getResultadoOriginal()}, {$this->getResultadoCopia()}, CURDATE(), '{$this->getTipoestudio()}', '{$this->getHoraCita()}',NULL,'{$this->getMedicoAsociado()}')";
    //echo var_dump($sql);
    //die();
     $save = $this->db->query($sql);
@@ -408,13 +408,27 @@ class Paciente{
   }
 
   public function editar(){
-    $sql = "UPDATE pacientes SET idpaciente = {$this->getId()}, creado_por = {$this->getCreadoPor()}, idlaboratorio = {$this->getIdLaboratorio()}, nombre = '{$this->getNombre()}', sexo='{$this->getSexo()}', edad = {$this->getEdad()}, telefono = '{$this->getTelefono()}', movil = '{$this->getMovil()}', ciudad = '{$this->getCiudad()}', estado = '{$this->getEstado()}', direccion = '{$this->getDireccion()}', estudio = '{$this->getEstudio()}', folio_id = '{$this->getFolioID()}', folio = '{$this->getFolio()}', activacion_farma = '{$this->getActivacionFarma()}', activacion_representante = '{$this->getActivacionRepresentante()}', fecha_cita = '{$this->getFechaCita()}', estatus = {$this->getEstatus()}, motivo_cancelacion = '{$this->getCancelacion()}', observaciones = '{$this->getObservaciones()}', medico_tratante = {$this->getMedicoTratante()}, fecha_entrega = '{$this->getFechaEntrega()}', tipo_cupon = '{$this->getTipoCupon()}', factura_mdt = '{$this->getFacturaMDT()}', factura_asociado = '{$this->getFacturaAsociado()}', fecha_confirmacion = '{$this->getFechaConfirmacion()}', fecha_nacimiento = '{$this->getFechaNacimiento()}', clinica = '{$this->getClinica()}', pago_factura = '{$this->getPagoFactura()}', idprograma = {$this->getIdPrograma()}, resultados = '{$this->getResultados()}', cupon_original = {$this->getCuponOriginal()}, cupon_copia = {$this->getCuponCopia()}, consentimiento_original = {$this->getConsentimientoOriginal()}, consentimiento_copia = {$this->getConsentimientoCopia()}, resultado_original = {$this->getResultadoOriginal()}, resultado_copia = {$this->getResultadoCopia()}, tipo_estudio = '{$this->getTipoestudio()}', hora_cita = '{$this->getHoraCita()}', fecha_resultados = '{$this->getFechaResultados()}', medico_asociado = '{$this->getMedicoAsociado()}' WHERE idpaciente={$this->idpaciente} ;";
-    $save = $this->db->query($sql);
+    $sql = "UPDATE pacientes SET idpaciente = {$this->getId()}, creado_por = {$this->getCreadoPor()}, idlaboratorio = {$this->getIdLaboratorio()}, nombre = '{$this->getNombre()}', sexo='{$this->getSexo()}', edad = {$this->getEdad()}, telefono = '{$this->getTelefono()}', movil = '{$this->getMovil()}', ciudad = '{$this->getCiudad()}', estado = '{$this->getEstado()}', direccion = '{$this->getDireccion()}', estudio = '{$this->getEstudio()}', folio_id = '{$this->getFolioID()}', folio = '{$this->getFolio()}', activacion_farma = '{$this->getActivacionFarma()}', activacion_representante = '{$this->getActivacionRepresentante()}', fecha_cita = '{$this->getFechaCita()}', estatus = {$this->getEstatus()}, motivo_cancelacion = '{$this->getCancelacion()}', observaciones = '{$this->getObservaciones()}', medico_tratante = {$this->getMedicoTratante()}, fecha_entrega = '{$this->getFechaEntrega()}', tipo_cupon = '{$this->getTipoCupon()}', factura_mdt = '{$this->getFacturaMDT()}', factura_asociado = '{$this->getFacturaAsociado()}', fecha_confirmacion = '{$this->getFechaConfirmacion()}', fecha_nacimiento = '{$this->getFechaNacimiento()}', clinica = '{$this->getClinica()}', pago_factura = '{$this->getPagoFactura()}', idprograma = {$this->getIdPrograma()}, cupon_original = {$this->getCuponOriginal()}, cupon_copia = {$this->getCuponCopia()}, consentimiento_original = {$this->getConsentimientoOriginal()}, consentimiento_copia = {$this->getConsentimientoCopia()}, resultado_original = {$this->getResultadoOriginal()}, resultado_copia = {$this->getResultadoCopia()}, tipo_estudio = '{$this->getTipoestudio()}', hora_cita = '{$this->getHoraCita()}', fecha_resultados = '{$this->getFechaResultados()}', medico_asociado = '{$this->getMedicoAsociado()}' WHERE idpaciente={$this->idpaciente} ;";
+    //echo var_dump($sql);
+    //die();
+	$save = $this->db->query($sql);
     $result = false;
     if ($save) {
       $result = true;
     }
     return $result;
+  }
+  
+  public function editarimagen(){
+      $sql = "UPDATE pacientes SET resultados = '{$this->getResultados()}' WHERE idpaciente={$this->idpaciente} ;" ;
+      //echo var_dump($sql);
+      //die();
+      $save = $this->db->query($sql);
+      $result = false;
+      if ($save) {
+        $result = true;
+      }
+      return $result;
   }
 
   public function getAll(){
@@ -444,10 +458,12 @@ class Paciente{
 
   
     public function getPrograma($idprograma, $idcliente){
-    $sql = "SELECT pacientes.*, u.nombre as nombre_usuario, p.nombre as nombre_programa, p.nombre as nombre_programa, c.nombre as cliente, l.nombre as laboratorio FROM pacientes
+    $sql = "SELECT pacientes.*, pacientes.resultados, med.nombre as medico_asociado, med.correo as asociado_correo, medt.nombre as medico_tratante, medt.correo as tratante_correo, u.nombre as nombre_usuario, p.nombre as nombre_programa, p.nombre as nombre_programa, c.nombre as cliente, l.nombre as laboratorio FROM pacientes
     INNER JOIN programas p ON p.idprograma = pacientes.idprograma
     INNER JOIN persona c ON pacientes.estudio = c.idpersona
     INNER JOIN usuario u ON pacientes.creado_por = u.idusuario
+	INNER JOIN usuario med ON pacientes.medico_asociado = med.idusuario
+	INNER JOIN usuario medt ON pacientes.medico_tratante = medt.idusuario
     INNER JOIN laboratorio l ON pacientes.idlaboratorio = l.idlaboratorio
     WHERE pacientes.idprograma = $idprograma and pacientes.estudio = $idcliente and pacientes.estatus != 3 ORDER BY idpaciente DESC";
     $pacientes = $this->db->query($sql);

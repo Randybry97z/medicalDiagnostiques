@@ -45,6 +45,7 @@ $(document).ready(function() {
                 {
                     extend: 'colvis',
                     text: 'Mostrar columnas',
+					columns: '0,1,2,3,4,6,42'
                 }
         ]
     } );

@@ -301,10 +301,7 @@ input:invalid:required {
                                 <option value="MASEI">MASEI</option>
                             </select>
                         </div>
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Resultados</label>
-                            <input type="file" name="resultados" id="resultados" class="form-control">
-                        </div>
+                        
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Fecha de Envío de Resultados</label>
                             <input type="date" name="fecha_resultados" id="fecha_resultados" class="form-control">
@@ -314,6 +311,7 @@ input:invalid:required {
                                 Guardar</button>
                         </div>
                     </form>
+					
                 </div>
             </div>
         </div>
